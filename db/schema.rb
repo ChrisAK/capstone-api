@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171002194017) do
+ActiveRecord::Schema.define(version: 20171002202842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 20171002194017) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_examples_on_user_id", using: :btree
+  end
+
+  create_table "pokemon_teams", force: :cascade do |t|
+    t.integer  "pokemon_id"
+    t.integer  "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pokemon_id"], name: "index_pokemon_teams_on_pokemon_id", using: :btree
+    t.index ["team_id"], name: "index_pokemon_teams_on_team_id", using: :btree
   end
 
   create_table "pokemons", force: :cascade do |t|
@@ -42,6 +51,14 @@ ActiveRecord::Schema.define(version: 20171002194017) do
     t.string   "image"
   end
 
+  create_table "teams", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_teams_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
     t.string   "token",           null: false
@@ -53,4 +70,7 @@ ActiveRecord::Schema.define(version: 20171002194017) do
   end
 
   add_foreign_key "examples", "users"
+  add_foreign_key "pokemon_teams", "pokemons"
+  add_foreign_key "pokemon_teams", "teams"
+  add_foreign_key "teams", "users"
 end

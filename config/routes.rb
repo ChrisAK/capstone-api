@@ -1,6 +1,9 @@
 # frozen_string_literal: true
+
 Rails.application.routes.draw do
-  resources :pokemons
+  resources :pokemon_teams, except: [:new, :edit]
+  resources :teams, except: [:new, :edit]
+  resources :pokemons, only: [:index, :show]
   resources :examples, except: [:new, :edit]
   post '/sign-up' => 'users#signup'
   post '/sign-in' => 'users#signin'
