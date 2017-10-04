@@ -3,7 +3,7 @@ class TeamsController < ApplicationController
 
   # GET /teams
   def index
-    @teams = Team.all
+    @teams = Team.where(:user_id => params[:user_id])
 
     render json: @teams
   end

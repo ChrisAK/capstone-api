@@ -3,7 +3,7 @@ class PokemonTeamsController < ApplicationController
 
   # GET /pokemon_teams
   def index
-    @pokemon_teams = PokemonTeam.all
+    @pokemon_teams = PokemonTeam.where(:team_id => params[:team_id])
 
     render json: @pokemon_teams
   end
