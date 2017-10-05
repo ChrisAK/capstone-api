@@ -18,9 +18,6 @@ Must bundle install, migrate, and seed database.
 | sign_in                  | POST   | /sign_in                                              | users#signin       |
 |                          | DELETE | /sign_out/:id                                         | users#signout      |
 |                          | PATCH  | /change_password/:id                                  | users#changepw     |
-| files                    | GET    | /encounters/:id                                       | encounters#show    |
-|                          | PATCH  | /users/:user_id/campaigns/:campaign_id/encounters/:id | encounters#update  |
-|                          | DELETE | /users/:user_id/campaigns/:campaign_id/encounters/:id | encounters#destroy |
 | user_teams               | GET    | /users/:user_id/teams                                 | teams#index        |
 | teams                    | POST   | /teams                                                | teams#create       |
 |                          | PATCH  | /teams/id                                             | teams#update       |
